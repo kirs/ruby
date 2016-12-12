@@ -3700,6 +3700,9 @@ rb_f_fork(VALUE obj)
     switch (pid = rb_fork_ruby(NULL)) {
       case 0:
 	rb_thread_atfork();
+  rb_thread_t *th = GET_THREAD();
+  VALUE recv = th->cfp->self;
+  EXEC_EVENT_HOOK(th, RUBY_EVENT_ATFORK, recv, 0, 0, Qundef);
 	if (rb_block_given_p()) {
 	    int status;
 	    rb_protect(rb_yield, Qundef, &status);

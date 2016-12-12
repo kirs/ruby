@@ -2051,6 +2051,7 @@ int ruby_native_thread_p(void);
 #define RUBY_EVENT_C_RETURN  0x0040
 #define RUBY_EVENT_RAISE     0x0080
 #define RUBY_EVENT_ALL       0x00ff
+#define RUBY_EVENT_ATFORK    0x0200
 
 /* for TracePoint extended events */
 #define RUBY_EVENT_B_CALL            0x0100
